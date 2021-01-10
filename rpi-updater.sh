@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 #root確認
-if (( "${UID}" !=0 )); then
+if (( "${UID}" != 0 )); then
 	echo "Root権限(sudo)で実行して下さい" >&2 ; exit 1
 fi
 
