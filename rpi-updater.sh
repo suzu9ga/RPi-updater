@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 #root確認
-if (( "${UID}" !=0 )); then
+if (( "${UID}" != 0 )); then
 	echo "Root権限(sudo)で実行して下さい" >&2 ; exit 1
 fi
 
@@ -11,9 +11,9 @@ run_cmd() {
 }
 
 #質問
-read -p "ディストリビューションのアップグレードをしますか？(少しリスクがあります)[y/n]:" dist echo
-read -p "ファームウェアのアップデートをしますか?(少しリスクがあります)[y/n]: " firm echo
-read -p "実行後再起動しますか? [y/n]: " rbt echo
+read -n 1 -p "ディストリビューションのアップグレードをしますか？(少しリスクがあります)[y/n]:" dist; echo
+read -n 1 -p "ファームウェアのアップデートをしますか?(少しリスクがあります)[y/n]: " firm; echo
+read -n 1 -p "実行後再起動しますか? [y/n]: " rbt; echo
 
 #アプデ本体
 echo "アップデートをします"
