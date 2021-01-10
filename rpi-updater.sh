@@ -18,15 +18,15 @@ read -n 1 -p "実行後再起動しますか? [y/n]: " rbt; echo
 #アプデ本体
 echo "アップデートをします"
 sleep 1
-run_cmd apt update
+run_cmd apt-get -y update
 
 echo "アップグレードをします"
 sleep 1
-run_cmd apt -y upgrade
+run_cmd apt-get -y upgrade
 
 if [[ "${dist}" = "y" ]]; then
 	echo "ディストリビューションのアップグレードをします"
-	run_cmd apt-get dist-upgrade
+	run_cmd apt-get -y dist-upgrade
 fi
 
 if [[ "${firm}" = "y" ]]; then
