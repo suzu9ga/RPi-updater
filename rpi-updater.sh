@@ -11,9 +11,39 @@ run_cmd() {
 }
 
 #質問
-read -p "ディストリビューションのアップグレードをしますか？(少しリスクがあります)[y/n]:" dist; echo
-read -p "ファームウェアのアップデートをしますか?(少しリスクがあります)[y/n]: " firm; echo
-read -p "実行後再起動しますか? [y/n]: " rbt; echo
+while :
+do
+	read -n 1 -p "ディストリビューションのアップグレードをしますか？(少しリスクがあります)[y/n]:" dist; echo
+		if [ "${dist}" = "y" ]; then
+			break
+		elif [ "${dist}" = "n" ]; then
+			echo "キャンセルされました"; break
+		else
+			echo "yかnで入力して下さい"
+		fi
+done
+while :
+do
+	read -n 1 -p "ファームウェアのアップデートをしますか?(少しリスクがあります)[y/n]: " firm; echo
+		if [ "${firm}" = "y" ]; then
+			break
+		elif [ "${firm}" = "n" ]; then
+			echo "キャンセルされました"; break
+		else
+			echo "yかnで入力して下さい"
+		fi
+done
+while :
+do
+	read -n 1 -p "実行後再起動しますか? [y/n]: " rbt; echo
+		if [ "${rbt}" = "y" ]; then
+			break
+		elif [ "${rbt}" = "n" ]; then
+			echo "キャンセルされました"; break
+		else
+			echo "yかnで入力して下さい"
+		fi
+done
 
 #アプデ本体
 echo "アップデートをします"
