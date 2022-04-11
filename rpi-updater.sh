@@ -48,15 +48,15 @@ done
 #アプデ本体
 echo "アップデートをします"
 sleep 1
-run_cmd apt-get -y update
+run_cmd apt -y update
 
 echo "アップグレードをします"
 sleep 1
-run_cmd apt-get -y upgrade
+run_cmd apt -y upgrade
 
 if [[ "${dist}" = "y" ]]; then
 	echo "ディストリビューションのアップグレードをします"
-	run_cmd apt-get -y dist-upgrade
+	run_cmd apt -y dist-upgrade
 fi
 
 if [[ "${firm}" = "y" ]]; then
@@ -65,10 +65,15 @@ if [[ "${firm}" = "y" ]]; then
 fi
 
 if [[ "${rbt}" = "y" ]]; then
-	echo "再起動します"
+	echo "クリーンアップをしています"
+	run_cmd apt -y clean
+	echo "再起動します.Bye!"
 	sleep 2
 	run_cmd reboot
 else
+	echo "クリーンアップをしています"
+	run_cmd apt -y clean
+	
 	echo "完了しました!終了します"
 	sleep 2
 	exit
